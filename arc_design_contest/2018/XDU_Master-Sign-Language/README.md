@@ -1,5 +1,5 @@
-# Master Sign Language
-This application is designed to help deaf-mute to communicate with normal people,The master sign language can convert sign language into text and display on screen, at the same time the voice broadcast. This application facilitates the communication between deaf-mute and the outside world.
+# Voice Control Car
+This application is designed to control car by voice. Extending to control anything we want by voice.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 - [Introduction](#introduction)
@@ -16,36 +16,15 @@ This application is designed to help deaf-mute to communicate with normal people
  <!-- markdown-toc end -->
 
 # Introduction
-The master sign language can help deaf-mute to communicate with normal people.
+We can control the car by voice and pass the control message to the remote car.
 ## Function
-   - **Chinese mode**<br/>
-     The processor recognizes the **Chinese sign language**, then the screen displays the recognition result and at the same time plays the recognition result.
-     
-      ![image](https://github.com/mk997630105/Master-Sign-Language/blob/master/Screenshots/Chinese-mode.gif)
-   - **English mode**<br/>
-     The processor recognizes the **English alphabet** sign language, then the screen displays the recognition result and at the same time plays the recognition result..
-     
-      ![image](https://github.com/mk997630105/Master-Sign-Language/blob/master/Screenshots/English-mode.gif)
-   - **Auto play mode**<br/>
-     The processor recognizes the user's **predefined sign language** and plays a predefined voice.
-   - **Voice Recognition**<br/>
-     The processor recognizes the **voice of normal people** and displays it on the screen for the deaf-mute to watch.
-     
-     ![image](https://github.com/mk997630105/Master-Sign-Language/blob/master/Screenshots/Voice-Recognition.gif)
-   - **Danger warning**<br/>
-     After the processor recognizes the horn sound, the user is alerted to the vehicle in a **vibration** manner.
-     
-      ![image](https://github.com/mk997630105/Master-Sign-Language/blob/master/Screenshots/Danger-warning.gif)
-   - **One-click assistance**<br/>
-     When in trouble, users can send their location information to their families for help.
-     
-      ![image](https://github.com/mk997630105/Master-Sign-Language/blob/master/Screenshots/One-click.gif)
 ## System Architecture
-   As shown in the figure below, the system consists of **three parts: input, master, and output**.
-   - The **input** include collecting gesture data,recognizing the voice of normal people and positioning the location of the user.
-   - The **master** is composed of an ARC processor. It mainly performs data processing and matching with a gesture library according to an algorithm, and sends a corresponding command to the output terminal at the same time.
-   - The **output** include displaying the corresponding text,playing the corresponding voice and senging message to guardian.
-   ![image](https://github.com/mk997630105/Master-Sign-Language/blob/master/Screenshots/Architecture.PNG)
+   - The **LD-3320** listens to user and recognize the voice to commend, and the pass to ARC.
+   - The **ARC** receives the message and parse the message to PWM value for car.
+   - The **esp8266** transmits the message to car by WiFi (Remote control).
+   - The **Rpi3** gets the PWM value and pass to STM32 that don't have WiFi module.
+   - The **STM32* outputs the PWM to the pair of wheel.
+   ![image](https://github.com/siang0128/Voice_Control_Car/blob/master/picture/Architecture.JPG)
 # Hardware and Software Setup
 ## Required Hardware   
    - 1 DesignWare ARC EM Starter Kit(EMSK)
